@@ -7,8 +7,8 @@ const ShopSelection: React.FC = () => {
   const navigate = useNavigate();
   
   const shopOptions = [
-    { id: 'shop1', name: 'Shop One' },
-    { id: 'shop2', name: 'Shop Two' }
+    { id: 'shop1', name: 'Prakash' },
+    { id: 'shop2', name: 'Vikash' }
   ];
   
   const containerVariants = {

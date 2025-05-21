@@ -64,7 +64,7 @@ const Layout: React.FC<LayoutProps> = ({
 
       <footer className="bg-gray-100 border-t border-gray-200 py-4">
         <div className="container mx-auto px-4 text-center text-gray-600 text-sm">
-          © {new Date().getFullYear()} Shop Money Management
+          © {new Date().getFullYear()} Sahil Expense Project
         </div>
       </footer>
     </div>

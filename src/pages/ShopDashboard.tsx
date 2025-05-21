@@ -89,7 +89,7 @@ const ShopDashboard: React.FC = () => {
     navigate(`/shop/${shopId}/add-customer`);
   };
   
-  const shopName = shopId === 'shop1' ? 'Shop One' : 'Shop Two';
+  const shopName = shopId === 'shop1' ? 'Prakash' : 'Vikash';
   
   return (
     <Layout title={shopName} showBackButton={true} showHomeButton={false}>

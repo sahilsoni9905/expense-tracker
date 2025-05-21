@@ -8,8 +8,8 @@ router.get('/', async (req, res) => {
   try {
     // We'll use fixed shops for this application
     const shops = [
-      { _id: 'shop1', name: 'Shop One' },
-      { _id: 'shop2', name: 'Shop Two' }
+      { _id: 'shop1', name: 'Prakash' },
+      { _id: 'shop2', name: 'Vikash' }
     ];
     
     res.status(200).json(shops);
@@ -26,8 +26,8 @@ router.get('/:shopId', async (req, res) => {
     
     // Fixed shops
     const shops = {
-      'shop1': { _id: 'shop1', name: 'Shop One' },
-      'shop2': { _id: 'shop2', name: 'Shop Two' }
+      'shop1': { _id: 'shop1', name: 'Prakash' },
+      'shop2': { _id: 'shop2', name: 'Vikash' }
     };
     
     const shop = shops[shopId];

@@ -9,12 +9,12 @@ interface AuthState {
 }
 
 const useAuthStore = create<AuthState>((set) => ({
-  email: "owner@gmail.com",
+  email: "prakashowner@gmail.com",
   password: "owner000",
   isAuthenticated: false,
   login: (inputEmail, inputPassword) => {
     const match =
-      inputEmail === "owner@gmail.com" && inputPassword === "owner000";
+      inputEmail === "prakashowner@gmail.com" && inputPassword === "owner000";
     set({ isAuthenticated: match });
     return match;
   },
