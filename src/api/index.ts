@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://expense-tracker-backend-lake.vercel.app';
+const API_URL = 'https://express-server-2.vercel.app';
 
 const api = axios.create({
   baseURL: API_URL,
