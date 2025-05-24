@@ -28,4 +28,10 @@ export const getTransactions = (shopId: string, customerId: string) =>
 export const createTransaction = (shopId: string, customerId: string, transactionData: any) => 
   api.post(`/shops/${shopId}/customers/${customerId}/transactions`, transactionData);
 
+// Auth endpoints
+export const matchPassword = (password: string) => 
+  api.post('/password/match', { password });
+export const changePassword = (oldPassword: string, newPassword: string) => 
+  api.post('/password/change', { oldPassword, newPassword });
+
 export default api;

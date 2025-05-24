@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ChevronLeft, Store } from "lucide-react";
+import { ChevronLeft, Store, Settings } from "lucide-react";
+import ChangePasswordModal from "./ChangePasswordModal";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({
 }) => {
   const navigate = useNavigate();
   const { shopId } = useParams();
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
   const goBack = () => navigate(-1);
   const goHome = () => {
@@ -45,15 +47,25 @@ const Layout: React.FC<LayoutProps> = ({
               <h1 className="text-xl font-semibold">{title}</h1>
             </div>
 
-            {showHomeButton && shopId && (
+            <div className="flex items-center space-x-2">
               <button
-                onClick={goHome}
+                onClick={() => setIsPasswordModalOpen(true)}
                 className="p-2 rounded-full hover:bg-blue-700 transition-colors"
-                aria-label="Go to dashboard"
+                aria-label="Settings"
               >
-                <Store size={24} />
+                <Settings size={20} />
               </button>
-            )}
+              
+              {showHomeButton && shopId && (
+                <button
+                  onClick={goHome}
+                  className="p-2 rounded-full hover:bg-blue-700 transition-colors"
+                  aria-label="Go to dashboard"
+                >
+                  <Store size={24} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -67,6 +79,11 @@ const Layout: React.FC<LayoutProps> = ({
           © {new Date().getFullYear()} Sahil Expense Project
         </div>
       </footer>
+
+      <ChangePasswordModal
+        isOpen={isPasswordModalOpen}
+        onClose={() => setIsPasswordModalOpen(false)}
+      />
     </div>
   );
 };

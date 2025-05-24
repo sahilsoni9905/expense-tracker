@@ -2,20 +2,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Lock, Mail } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = login(email, password);
-    if (success) {
-      navigate("/home");
-    } else {
-      alert("Invalid credentials");
+    
+    try {
+      setLoading(true);
+      const success = await login(email, password);
+      if (success) {
+        navigate("/home");
+      } else {
+        toast.error("Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      toast.error("Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,8 +65,16 @@ const Login: React.FC = () => {
           <button
             type="submit"
             className="w-full py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition"
+            disabled={loading}
           >
-            Login
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <span className="animate-spin h-4 w-4 mr-2 border-2 border-white border-t-transparent rounded-full"></span>
+                Logging in...
+              </span>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>
