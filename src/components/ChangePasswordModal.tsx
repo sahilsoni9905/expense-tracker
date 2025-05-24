@@ -121,3 +121,5 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ isOpen, onClo
     </div>
   );
 };
+
+export default ChangePasswordModal
