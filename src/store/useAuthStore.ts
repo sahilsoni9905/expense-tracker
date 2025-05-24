@@ -15,15 +15,13 @@ const useAuthStore = create<AuthState>((set) => ({
         return false;
       }
       const response = await matchPassword(password);
-      const isValid = response.data?.match === true;
+      const isValid = response.data?.isMatch === true;
       set({ isAuthenticated: isValid });
       return isValid;
-    } catch (error) {
-      console.error('Login failed:', error);
+    } catch (error: any) {
+      console.error('Login failed:', error.response?.data?.message || error.message);
       return false;
     }
   },
   logout: () => set({ isAuthenticated: false }),
 }));
-
-export default useAuthStore

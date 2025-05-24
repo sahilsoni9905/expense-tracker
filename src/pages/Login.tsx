@@ -22,9 +22,9 @@ const Login: React.FC = () => {
       } else {
         toast.error("Invalid credentials");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login failed:", error);
-      toast.error("Login failed");
+      toast.error(error.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -81,5 +81,3 @@ const Login: React.FC = () => {
     </div>
   );
 };
-
-export default Login;
